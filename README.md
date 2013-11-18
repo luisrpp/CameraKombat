@@ -14,3 +14,6 @@ Goals of this project
 - Support for multiple segmentation methods
 - Support for Kinect
 - More...
+
+
+License: LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
