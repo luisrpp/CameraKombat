@@ -10,7 +10,7 @@ The original version was implemented in C, with OpenCV + OpenGL.
 Goals of this project
 ---------------------
 
-- Implementation in Python, with OpenCV (cv2 + numpy) + PyGame
+- New implementation in Python, with OpenCV (cv2 + numpy) + PyGame
 - Support for multiple segmentation methods
 - Support for Kinect
 - More...
