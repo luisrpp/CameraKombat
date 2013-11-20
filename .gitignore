@@ -1,4 +1,5 @@
 *.py~
 *.pyc
+*.so
 .DS_Store
 .idea
