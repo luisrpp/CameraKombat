@@ -39,7 +39,7 @@ class BackgroundSubtractorMOG2(object):
         return background
 
 
-libmog2 = C.cdll.LoadLibrary(settings.CTYPES_LIB_PAH + "libmog2.so")
+libmog2 = C.cdll.LoadLibrary(settings.CTYPES_LIB_PATH + "libmog2.so")
 
 
 def getfg(img):

@@ -19,4 +19,4 @@ SEGMENTATION_STRATEGY = "BACKGROUND_SUBTRACTOR_MOG2"
 NUM_COMPUTE_FRAMES = 60
 
 # ctypes libs path
-CTYPES_LIB_PAH = "/Users/luisrpp/Development/python/CameraKombat/lib/"
+CTYPES_LIB_PATH = "/Users/luisrpp/Development/python/CameraKombat/lib/"
