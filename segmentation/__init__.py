@@ -49,8 +49,19 @@ class SegmentationFactory(object):
     @staticmethod
     def get_instance(strategy="SIMPLE_SUBTRACTION_METHOD"):
         if strategy.upper() == "SIMPLE_SUBTRACTION_METHOD":
-            from simple_subtraction_method import SimpleSubtractionMethod
+            from bs_simple import SimpleSubtractionMethod
 
             return Segmentation(SimpleSubtractionMethod)
 
-        raise ValueError('No segmentation strategy with name "%s" found' % strategy)
+        elif strategy.upper() == "BACKGROUND_SUBTRACTOR_MOG":
+            from bs_mog import BackgroundSubtractorMOG
+
+            return Segmentation(BackgroundSubtractorMOG)
+
+        elif strategy.upper() == "BACKGROUND_SUBTRACTOR_MOG2":
+            from bs_mog2 import BackgroundSubtractorMOG2
+
+            return Segmentation(BackgroundSubtractorMOG2)
+
+        else:
+            raise ValueError('No segmentation strategy with name "%s" found' % strategy)

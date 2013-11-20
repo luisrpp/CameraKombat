@@ -34,6 +34,7 @@ class CameraKombat(object):
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
+                    self.cam.release()
                     sys.exit()
 
             ret, self.frame = self.cam.read()  # Current frame from Webcam or video file
@@ -56,6 +57,7 @@ class CameraKombat(object):
                     self.screen.blit(convert.cvgrayimage_to_pygame(frame), (0, 0))
                 pygame.display.flip()
             else:
+                self.cam.release()
                 sys.exit()
 
 

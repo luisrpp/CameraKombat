@@ -8,10 +8,15 @@
 ###############################################################################
 
 
-# Display configuration
+## Display configuration ##
 SCREEN_SIZE = 1024, 640
 BACKGROUND_COLOR = 0, 0, 0
 
-# Segmentation configuration
-SEGMENTATION_STRATEGY = "SIMPLE_SUBTRACTION_METHOD"
+## Segmentation configuration ##
+
+# Segmentation strategy options: SIMPLE_SUBTRACTION_METHOD, BACKGROUND_SUBTRACTOR_MOG, BACKGROUND_SUBTRACTOR_MOG2
+SEGMENTATION_STRATEGY = "BACKGROUND_SUBTRACTOR_MOG2"
 NUM_COMPUTE_FRAMES = 60
+
+# ctypes libs path
+CTYPES_LIB_PAH = "/Users/luisrpp/Development/python/CameraKombat/lib/"
