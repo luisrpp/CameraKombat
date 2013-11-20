@@ -34,9 +34,11 @@ class BackgroundSubtractorMOG2(object):
 
     def process(self, image):
         foreground = getfg(image)
-        background = getbg(image)
+        element = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+        cv2.erode(foreground, element, foreground, iterations=1)
+        cv2.dilate(foreground, element, foreground, iterations=1)
 
-        return background
+        return foreground
 
 
 libmog2 = C.cdll.LoadLibrary(settings.CTYPES_LIB_PATH + "libmog2.so")
@@ -44,16 +46,9 @@ libmog2 = C.cdll.LoadLibrary(settings.CTYPES_LIB_PATH + "libmog2.so")
 
 def getfg(img):
     (rows, cols) = (img.shape[0], img.shape[1])
-    res = np.zeros(dtype=np.uint8, shape=(rows, cols, 1))
+    res = np.zeros(dtype=np.uint8, shape=(rows, cols))
     libmog2.getfg(img.shape[0], img.shape[1],
                   img.ctypes.data_as(C.POINTER(C.c_ubyte)),
                   res.ctypes.data_as(C.POINTER(C.c_ubyte)))
     return res
 
-
-def getbg(img):
-    (rows, cols) = (img.shape[0], img.shape[1])
-    res = np.zeros(dtype=np.uint8, shape=(rows, cols, 3))
-
-    libmog2.getbg(rows, cols, res.ctypes.data_as(C.POINTER(C.c_ubyte)))
-    return res

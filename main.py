@@ -21,6 +21,7 @@ from segmentation import SegmentationFactory
 class CameraKombat(object):
     def __init__(self, video_src):
         self.cam = video.create_capture(video_src)
+        cv2.namedWindow('Camera Kombat')
         pygame.init()
         pygame.display.set_caption('Camera Kombat')
         self.size = settings.SCREEN_SIZE
@@ -35,6 +36,7 @@ class CameraKombat(object):
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.cam.release()
+                    cv2.destroyAllWindows()
                     sys.exit()
 
             ret, self.frame = self.cam.read()  # Current frame from Webcam or video file
@@ -56,8 +58,11 @@ class CameraKombat(object):
                 else:
                     self.screen.blit(convert.cvgrayimage_to_pygame(frame), (0, 0))
                 pygame.display.flip()
+
+                cv2.imshow('Original', self.frame)
             else:
                 self.cam.release()
+                cv2.destroyAllWindows()
                 sys.exit()
 
 
